@@ -167,3 +167,7 @@ nav {
 .notion-asset-wrapper-video div {
     height: 100% !important;
 }
+
+aside{
+      padding: 1.5rem;
+}
