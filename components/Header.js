@@ -91,6 +91,18 @@ export default function Header ({ navBarTitle, fullWidth }) {
     { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
   ]
 
+  // 动态检测 html 的 class 是否包含 dark
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  useEffect(() => {
+    const checkDark = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'))
+    }
+    checkDark()
+    const observer = new MutationObserver(checkDark)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <div className="observer-element h-4 md:h-12" ref={sentinelRef}></div>
@@ -131,7 +143,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
             }}
           >
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-              <path stroke={dark ? '#fff' : '#222'} strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+              <path stroke={isDarkMode ? '#fff' : '#000'} strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
         </div>
@@ -181,7 +193,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
               onClick={() => setMobileMenuOpen(false)}
             >
               <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-                <path stroke={dark ? '#fff' : '#222'} strokeWidth="2" strokeLinecap="round" d="M6 6l12 12M6 18L18 6" />
+                <path stroke={isDarkMode ? '#fff' : '#000'} strokeWidth="2" strokeLinecap="round" d="M6 6l12 12M6 18L18 6" />
               </svg>
             </button>
           </div>
