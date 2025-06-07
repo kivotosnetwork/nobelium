@@ -2,7 +2,7 @@ const BLOG = {
   title: 'Wlog',
   author: 'Tasuku Hachisuka',
   email: 't@sk.ci',
-  link: 'https://notion.mingze.de',
+  link: 'https://blog.wmz1024.com',
   description: 'Tasuku\'s Blog',
   lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
@@ -13,7 +13,7 @@ const BLOG = {
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: 2020, // If leave this empty, current year will be used.
   postsPerPage: 7,
-  sortByDate: false,
+  sortByDate: true,
   showAbout: true,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
@@ -38,7 +38,7 @@ const BLOG = {
   },
   comment: {
     // support provider: gitalk, utterances, cusdis
-    provider: '', // leave it empty if you don't need any comment plugin
+    provider: 'cusdis', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
       repo: '', // The repository of store comments
       owner: '',
