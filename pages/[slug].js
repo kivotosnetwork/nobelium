@@ -85,7 +85,7 @@ export async function getStaticProps ({ params: { slug } }) {
   if (!post) return { notFound: true }
 
   const blockMap1 = await getPostBlocks(post.id)
-  const clonePageBlock = deepClone(blockMap1)
+  const clonePageBlock = blockMap1
   let count = 0
   const blocksToProcess = Object.keys(clonePageBlock?.block || {})
 
@@ -126,7 +126,7 @@ export async function getStaticProps ({ params: { slug } }) {
     }
   }
 
-    const blockMap = deepClone(clonePageBlock)
+    const blockMap = clonePageBlock
   const emailHash = createHash('md5')
     .update(clientConfig.email)
     .digest('hex')
