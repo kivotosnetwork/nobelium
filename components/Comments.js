@@ -54,11 +54,11 @@ const Comments = ({ frontMatter }) => {
       {BLOG.comment && BLOG.comment.provider === 'utterances' && (
         <UtterancesComponent issueTerm={frontMatter.id} />
       )}
-          {(
+
             <div key='Waline'>
               <WalineComponent />
             </div>
-          )}
+
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import  { createRef, useEffect } from 'react'
 import { init } from '@waline/client'
 import { useRouter } from 'next/router'
-import '@waline/client/dist/waline.css'
+import '../node_modules/@waline/client/dist/waline.css'
 
 const path = ''
 let waline = null
@@ -27,7 +27,7 @@ const WalineComponent = (props) => {
         el: containerRef.current,
         serverURL: 'https://waline.877771.xyz',
         lang: "zh-cn",
-        reaction: true,
+        reaction: false,
         dark: 'html.dark',
         emoji: [
           '//npm.elemecdn.com/@waline/emojis@1.1.0/tieba',
