@@ -163,3 +163,7 @@ nav {
 .capture-pointer-events * {
   @apply pointer-events-none;
 }
+
+.notion-asset-wrapper-video div {
+    height: 100% !important;
+}
