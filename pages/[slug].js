@@ -84,7 +84,49 @@ export async function getStaticProps ({ params: { slug } }) {
 
   if (!post) return { notFound: true }
 
-  const blockMap = await getPostBlocks(post.id)
+  const blockMap1 = await getPostBlocks(post.id)
+  const clonePageBlock = deepClone(blockMap1)
+  let count = 0
+  const blocksToProcess = Object.keys(clonePageBlock?.block || {})
+
+  for (let i = 0; i < blocksToProcess.length; i++) {
+    const blockId = blocksToProcess[i]
+    const b = clonePageBlock?.block[blockId]
+
+    if (slice && slice > 0 && count > slice) {
+      delete clonePageBlock?.block[blockId]
+      continue
+    }
+
+    count++
+
+    // 处理 c++、c#、汇编等语言名字映射
+    if (b?.value?.type === 'code') {
+      if (b?.value?.properties?.language?.[0][0] === 'C++') {
+        b.value.properties.language[0][0] = 'cpp'
+      }
+      if (b?.value?.properties?.language?.[0][0] === 'C#') {
+        b.value.properties.language[0][0] = 'csharp'
+      }
+      if (b?.value?.properties?.language?.[0][0] === 'Assembly') {
+        b.value.properties.language[0][0] = 'asm6502'
+      }
+    }
+
+    // 如果是文件，或嵌入式PDF，需要重新加密签名
+    if (
+      ['file', 'pdf', 'video', 'audio'].includes(b?.value?.type) &&
+      b?.value?.properties?.source?.[0][0] &&
+      (b?.value?.properties?.source?.[0][0].indexOf('attachment') === 0 ||
+        b?.value?.properties?.source?.[0][0].indexOf('amazonaws.com') > 0)
+    ) {
+      const oldUrl = b?.value?.properties?.source?.[0][0]
+      const newUrl = `https://notion.so/signed/${encodeURIComponent(oldUrl)}?table=block&id=${b?.value?.id}`
+      b.value.properties.source[0][0] = newUrl
+    }
+  }
+
+    const blockMap = deepClone(clonePageBlock)
   const emailHash = createHash('md5')
     .update(clientConfig.email)
     .digest('hex')
