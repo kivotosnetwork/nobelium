@@ -93,10 +93,7 @@ export async function getStaticProps ({ params: { slug } }) {
     const blockId = blocksToProcess[i]
     const b = clonePageBlock?.block[blockId]
 
-    if (slice && slice > 0 && count > slice) {
-      delete clonePageBlock?.block[blockId]
-      continue
-    }
+
 
     count++
 
