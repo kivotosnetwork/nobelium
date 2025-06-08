@@ -7,7 +7,8 @@ import useTheme from '@/lib/theme'
     { id: 0, name: "博客", to: '/', show: true },
     { id: 1, name: "关于", to: '/about', show: true },
     { id: 2, name: "订阅", to: '/feed', show: true, external: true },
-    { id: 3, name: "搜寻", to: '/search', show: true }
+    { id: 3, name: "搜寻", to: '/search', show: true },
+    { id: 4, name: "朋友", to: '/links', show: true },
   ]
 const NavBar = () => {
 
