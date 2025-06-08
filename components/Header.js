@@ -2,7 +2,6 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useConfig } from '@/lib/config'
-import { useLocale } from '@/lib/locale'
 import useTheme from '@/lib/theme'
   const links = [
     { id: 0, name: "博客", to: '/', show: true },
