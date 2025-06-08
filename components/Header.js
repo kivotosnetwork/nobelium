@@ -4,16 +4,14 @@ import Image from 'next/image'
 import { useConfig } from '@/lib/config'
 import { useLocale } from '@/lib/locale'
 import useTheme from '@/lib/theme'
-
-const NavBar = () => {
-  const BLOG = useConfig()
-  const locale = useLocale()
   const links = [
-    { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
-    { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: '/feed', show: true, external: true },
-    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
+    { id: 0, name: "博客", to: '/', show: true },
+    { id: 1, name: "关于", to: '/about', show: true },
+    { id: 2, name: "订阅", to: '/feed', show: true, external: true },
+    { id: 3, name: "搜寻", to: '/search', show: true }
   ]
+const NavBar = () => {
+
   return (
     <div className="flex-shrink-0">
       <ul className="flex flex-row">
@@ -83,13 +81,6 @@ export default function Header ({ navBarTitle, fullWidth }) {
 
   // 新增：移动端菜单控制
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const locale = useLocale()
-  const links = [
-    { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
-    { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: '/feed', show: true, external: true },
-    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
-  ]
 
   // 动态检测 html 的 class 是否包含 dark
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -197,7 +188,9 @@ export default function Header ({ navBarTitle, fullWidth }) {
               </svg>
             </button>
           </div>
-          <nav className="flex-1 flex flex-col items-center justify-center space-y-8">
+          <nav className={`flex-1 flex flex-col space-y-8 m-auto w-full ${
+          !fullWidth ? 'max-w-3xl px-4' : 'px-4 md:px-24'
+        }`}  style={{paddingLeft: '1.5rem',paddingTop:'1.5rem'}}>
             {links.filter(link => link.show).map(link => (
               <Link
                 key={link.id}
