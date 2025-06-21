@@ -3,7 +3,7 @@ const BLOG = {
   author: '基沃网路',
   email: 'kivotos@horzteam.com',
   link: 'https://minecraft.kivotos.net',
-  description: 'Kivotos Network 基沃网路 ｜ RPG生存工业建筑Minecraft服务器',
+  description: 'Kivotos Network | 基沃网路',
   lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
@@ -23,7 +23,7 @@ const BLOG = {
     keywords: ['Blog', 'Website', 'Tasuku','Hachisuka',"Wlog"],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
-  notionPageId: "219fdea4db5c809d862bcdd5e83f3f92", // DO NOT CHANGE THIS！！！
+  notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   analytics: {
     provider: '', // Currently we support Google Analytics and Ackee, please fill with 'ga' or 'ackee', leave it empty to disable it.
