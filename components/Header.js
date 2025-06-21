@@ -4,11 +4,12 @@ import Image from 'next/image'
 import { useConfig } from '@/lib/config'
 import useTheme from '@/lib/theme'
   const links = [
-    { id: 0, name: "博客", to: '/', show: true },
-    { id: 1, name: "关于", to: '/about', show: true },
-    { id: 2, name: "订阅", to: '/feed', show: true, external: true },
+    { id: 0, name: "资讯", to: '/', show: true },
+    { id: 1, name: "下载与上手", to: '/setup', show: true },
+    { id: 2, name: "账户", to: 'https://id.kivotos.net/', show: true, external: true },
     { id: 3, name: "搜寻", to: '/search', show: true },
     { id: 4, name: "主站", to: 'https://kivotos.net', show: true, external: true },
+    { id: 5, name: "规则", to: '/rule', show: true },
   ]
 const NavBar = () => {
 
