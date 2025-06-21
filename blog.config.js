@@ -1,5 +1,5 @@
 const BLOG = {
-  title: '基沃网路',
+  title: '基沃网路资讯站',
   author: '基沃网路',
   email: 'kivotos@horzteam.com',
   link: 'https://minecraft.kivotos.net',

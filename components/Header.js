@@ -8,7 +8,7 @@ import useTheme from '@/lib/theme'
     { id: 1, name: "关于", to: '/about', show: true },
     { id: 2, name: "订阅", to: '/feed', show: true, external: true },
     { id: 3, name: "搜寻", to: '/search', show: true },
-    { id: 4, name: "朋友", to: '/links', show: true },
+    { id: 4, name: "主站", to: 'https://kivotos.net', show: true, external: true },
   ]
 const NavBar = () => {
 
